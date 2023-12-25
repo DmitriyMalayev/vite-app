@@ -1,31 +1,13 @@
-import React, {useState} from "react";
-
-const Person = () => {
-    const [people, setPeople] = useState([
-        {name: "Mike", age: 41, hobby: "cooking"},
-        {name: "Dave", age: 41, hobby: "cooking"},
-    ])
-
-    function handleClick() {
-        setPeople([{name:"ABC", age:100, hobby: "designing"}])
-    }
-
+// eslint-disable-next-line react/prop-types
+const Person = ({id, name, age, hobby, addPerson, removePerson}) => {
     return (
         <div>
-            {people.map((person) => {
-                return (
-                    <div key={person.name}>
-                        <h5>{person.name}</h5>
-                        <h5>{person.age}</h5>
-                        <h5>{person.hobby}</h5>
-                    </div>
-                )
-            })}
-            <button onClick={handleClick}>Click</button>
-
+            <h4>{name}</h4>
+            <h4>{age}</h4>
+            <h4>{hobby}</h4>
+            <button onClick={() => removePerson(id)}>Remove</button>
         </div>
     );
-
 };
 
 export default Person;

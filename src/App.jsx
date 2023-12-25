@@ -7,7 +7,10 @@ import './App.css'
 // import ShortCircuit from "./components/ShortCircuit.jsx";
 // import ToggleChallenge from "./components/ToggleChallenge.jsx";
 // import UserChallenge from "./components/UserChallenge.jsx";
-import CleaningFunction from "./components/CleaningFunction.jsx";
+// import CleaningFunction from "./components/CleaningFunction.jsx";
+import UpdateData from "./components/UpdateData.jsx";
+import LowerState from "./components/LowerState.jsx";
+import LatestReact from "./components/LatestReact.jsx";
 
 // import UpdateData from "./components/UpdateData.jsx";
 
@@ -17,9 +20,10 @@ function App() {
 
     return (
         <>
+            <LatestReact/>
             {/*<UserChallenge/>*/}
-            <CleaningFunction/>
-
+            {/*<CleaningFunction/>*/}
+            {/*<LowerState/>*/}
             {/*<ShortCircuit/>*/}
             {/*<ToggleChallenge/>*/}
             {/*<FetchingData/>*/}

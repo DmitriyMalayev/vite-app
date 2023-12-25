@@ -1,23 +1,41 @@
 import {data} from "../data.jsx";
-import {useState} from "react";
+import {useReducer} from "react";
+import {reducer} from "../reducer.js";
+import {CLEAR_PAGE, DELETE_ONE, RESET_PAGE} from "../actions.js";
+
+//useReducer(reducer which is a function that will manipulate the state, default state)
+//with userReducer we get back a state and the dispatch
+
+
+const defaultState = {
+    people: data,
+    isLoading: false
+}
 
 const UpdateData = () => {
-    const [people, setPeople] = useState(data)
+    // const [people, setPeople] = useState(data)
+    const [state, dispatch] = useReducer(reducer, defaultState)
 
-    function removeAll() {
-        setPeople([])
+    const deleteOne = (id) => {
+        dispatch({type: DELETE_ONE, payload: {id}})
     }
 
-    function deleteOne(id) {
-
-        const newList = people.filter((e) => e.id !== id)
-        setPeople(newList)
+    const clearPage = () => {
+        dispatch({type: CLEAR_PAGE})
     }
+    const resetPage = () => {
+        dispatch({type: RESET_PAGE})
+    }
+
+
+    // function resetPage() {
+    //     setPeople(data)
+    // }
+
 
     return (
         <div>
-
-            {people.map((person) => {
+            {state.people.map((person) => {
                 return (
                     <div key={person.id}>
                         <h1>{person.name}</h1>
@@ -25,13 +43,13 @@ const UpdateData = () => {
                     </div>
 
                 )
-
             })}
-            <button type={"button"} onClick={() => removeAll()}>Remove All</button>
-
+            {(state.people.length !== 0)
+                ? <button type={"button"} onClick={clearPage}>Clear</button>
+                : <button type={"button"} onClick={resetPage}>Reset</button>
+            }
         </div>
-    );
-
+    )
 };
 
 export default UpdateData;
